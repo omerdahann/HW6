@@ -36,3 +36,53 @@ int pack4Chars2Int(char c1, char c2, char c3, char c4)
         mask4 >>= 1;
     }
 }
+
+
+_______________________________________________
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+
+int pack4Chars2Int(char c1, char c2, char c3, char c4);
+
+void main()
+{
+    pack4Chars2Int('a', 'b', 'c', 'd');
+}
+
+int pack4Chars2Int(char c1, char c2, char c3, char c4)
+{
+    int mask = 0x80;
+    int mask1 = 0x80;
+    int mask2 = 0x80;
+    int mask3 = 0x80;
+    int maskf;
+    int maskf1;
+    int maskf2;
+    int maskf3;
+
+    while (mask > 0) {
+        printf("%d", (c1 & mask) > 0);
+        maskf = (c1 & mask) > 0;
+        mask >>= 1; 
+    }
+    while (mask1 > 0) {
+        printf("%d", (c2 & mask1) > 0);
+        maskf1 = (c2 & mask1) > 0;
+        mask1 >>= 1; 
+    }
+    while (mask2 > 0) {
+        printf("%d", (c3 & mask2) > 0);
+        maskf2 = (c3 & mask2) > 0;
+        mask2 >>= 1; 
+    }
+    while (mask3 > 0) {
+        printf("%d", (c4 & mask3) > 0);
+        maskf3 = (c3 & mask3) > 0;
+        mask3 >>= 1; 
+    }
+
+    int maskff = maskf | maskf1 | maskf2 | maskf3;
+    printf("\n%d", maskff);
+}
