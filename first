@@ -1,0 +1,38 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+
+int pack4Chars2Int(char c1, char c2, char c3, char c4);
+
+void main()
+{
+	pack4Chars2Int('a', 'b', 'c', 'd');
+}
+
+int pack4Chars2Int(char c1, char c2, char c3, char c4)
+{
+    int mask1 = 0x80;
+    int mask2 = 0x80;
+    int mask3 = 0x80;
+    int mask4 = 0x80;
+    while (mask1 > 0) {
+       // printf("%d%d%d%d", (c1 & mask) > 0, (c2 & mask) > 0, (c3 & mask) > 0, (c4 & mask) > 0);
+        (c1 & mask1) > 0;
+        mask1 >>= 1; //מקדם את המסכה כל פעם ב1 אחורה כלומר אם התחיל 10000000 אז קידום 01000000 ועושה כפל כל פעם עד שהמסכה קטנה מאפס
+    }
+
+    while (mask2 > 0) {
+        //c2& mask2;
+        mask2 >>= 1; 
+    }
+
+    while (mask3 > 0) {
+        //c3& mask3;
+        mask3 >>= 1; 
+    }
+
+    while (mask4 > 0) {
+        //c4& mask4;
+        mask4 >>= 1;
+    }
+}
